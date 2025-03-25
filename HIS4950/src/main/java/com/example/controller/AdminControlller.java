@@ -46,8 +46,5 @@ public class AdminControlller {
 	
 	//admin. -> all patient details (report) , all User details (report). => AWS S3.
 
-	public String CheckGit()
-	{
-		return "this is git";
-	}
+	
 }
