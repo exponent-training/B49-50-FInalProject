@@ -122,7 +122,7 @@ public class UserServiceIMPL implements UserService {
 	public String createPasswordResetToken(String email) {
 		String token = UUID.randomUUID().toString();
 
-	// Store the token with the associated email
+		// Store the token with the associated email
 
 		PasswordResetToken resetToken = new PasswordResetToken();
 
@@ -160,33 +160,5 @@ public class UserServiceIMPL implements UserService {
 			throw new RuntimeException("User not found with email: " + email);
 		}
 	}
-
-	/*
-	 * // public UserServiceIMPL(UserRepository ur) { // this.ur = ur; // } // //
-	 * public List<User> getAllPatients(String format) { // // return
-	 * ur.findByRole_Name("Patient"); // // try { // // // 1 load file // File file
-	 * = ResourceUtils.getFile("classpath:Patientpdf.jrxml"); // // // compile
-	 * report // JasperReport jasperReport =
-	 * JasperCompileManager.compileReport(file.getAbsolutePath()); // // //
-	 * datasource creation -> data -> report // JRBeanCollectionDataSource
-	 * dataSource = new JRBeanCollectionDataSource(); // // Map<String, Object>
-	 * parameters = new HashMap<String, Object>(); // parameters.put("created by",
-	 * "exponent"); // // // filling data inside report. patient.jrxml allpatient //
-	 * JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport,
-	 * parameters, dataSource); // // // checking format of report // // if
-	 * (format.equalsIgnoreCase("html")) { // //
-	 * JasperExportManager.exportReportToHtmlFile(jasperPrint,
-	 * "C:\\MyHospitalReports\\patient.html"); // // } else if
-	 * (format.equalsIgnoreCase("pdf")) { // //
-	 * JasperExportManager.exportReportToPdfFile(jasperPrint,
-	 * "C:\\MyHospitalReports\\patient.pdf"); // // } else if
-	 * (format.equalsIgnoreCase("csv")) { // // JRCsvExporter csvfile = new
-	 * JRCsvExporter(); // // csvfile.setExporterInput(new
-	 * SimpleExporterInput(jasperPrint)); // // csvfile.setExporterOutput(new
-	 * SimpleWriterExporterOutput("C:\\MyHospitalReports\\patient.csv")); // //
-	 * csvfile.exportReport(); // // } // // } catch (FileNotFoundException e) { //
-	 * // e.printStackTrace(); // } // // }
-	 */
-	
 
 }

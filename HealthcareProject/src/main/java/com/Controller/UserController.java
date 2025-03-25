@@ -63,16 +63,4 @@ public class UserController {
 		}
 	}
 
-	/*
-	 * @GetMapping("/generateReportOfPatient/{format}") public ResponseEntity<?>
-	 * generateReportOfPatient(@PathVariable String format, User user) throws
-	 * JRException {
-	 * 
-	 * us.getAllPatients(format, user);
-	 * 
-	 * return new ResponseEntity("Report created", HttpStatus.CREATED);
-	 * 
-	 * }
-	 */
-
 }

@@ -18,8 +18,6 @@ public interface UserService {
 
 	public String createPasswordResetToken(String email);
 
-//	public List<User> getAllPatients(String format , User user) throws JRException;
-
 	public User updateUserByEmail(String email, User user);
 
 	public void deleteUserByEmail(String email);
