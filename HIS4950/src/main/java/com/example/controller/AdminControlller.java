@@ -45,6 +45,9 @@ public class AdminControlller {
 	}
 	
 	//admin. -> all patient details (report) , all User details (report). => AWS S3.
-
+  public void CheckFeature()
+  {
+	  
+  }
 	
 }
