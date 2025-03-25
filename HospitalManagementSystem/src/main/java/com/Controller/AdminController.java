@@ -57,5 +57,9 @@ public class AdminController {
 		return new ResponseEntity("patients report gernrated", HttpStatus.CREATED);
 
 	}
+	
+	public void check() {
+		System.out.println("check method");
+	}
 
 }
