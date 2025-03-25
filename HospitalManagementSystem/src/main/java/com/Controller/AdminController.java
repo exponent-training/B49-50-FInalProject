@@ -58,5 +58,8 @@ public class AdminController {
 
 	}
 	
-	
+	public void check() {
+		System.out.println("checking method");
+	}
+
 }
