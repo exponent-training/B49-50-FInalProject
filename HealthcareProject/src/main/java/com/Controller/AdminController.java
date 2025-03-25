@@ -104,7 +104,4 @@ public class AdminController {
 		}
 	}
 
-	public String checkgit() {
-		return "git";
-	}
 }
