@@ -103,4 +103,8 @@ public class AdminController {
 			return new ResponseEntity("Wrong email", HttpStatus.BAD_REQUEST);
 		}
 	}
+
+	public String checkgit() {
+		return "git";
+	}
 }
