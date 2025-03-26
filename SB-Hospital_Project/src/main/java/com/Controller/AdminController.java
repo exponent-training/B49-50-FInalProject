@@ -44,4 +44,10 @@ public class AdminController {
 		
 		return new ResponseEntity(listofRoles , HttpStatus.OK);
 	}
+	
+	
+	public ResponseEntity<?> taskAPI()
+	{
+	   return new ResponseEntity("working fine" , HttpStatus.OK);
+	}
 }
