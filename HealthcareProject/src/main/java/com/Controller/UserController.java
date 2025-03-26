@@ -63,4 +63,12 @@ public class UserController {
 		}
 	}
 
+	@GetMapping("/generateUserReport/{format}")
+	public ResponseEntity<?> generateUserReport(@PathVariable String format) throws JRException {
+
+		us.generateUserReportInService(format);
+
+		return new ResponseEntity("Report created for user", HttpStatus.CREATED);
+
+	}
 }

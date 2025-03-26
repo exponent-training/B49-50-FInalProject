@@ -17,5 +17,6 @@ public interface AdminService {
 
 	public int updateRoleInService(String email, String roleName);
 
-	public int deleteRoleInService(String email , String roleName);
+	public int deleteRoleInService(String email, String roleName);
+
 }

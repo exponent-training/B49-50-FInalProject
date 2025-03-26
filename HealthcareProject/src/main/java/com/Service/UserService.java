@@ -22,4 +22,6 @@ public interface UserService {
 
 	public void deleteUserByEmail(String email);
 
+	public void generateUserReportInService(String format) throws JRException;
+
 }
