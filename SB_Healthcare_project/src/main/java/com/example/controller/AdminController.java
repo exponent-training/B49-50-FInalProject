@@ -108,7 +108,11 @@ public class AdminController {
 		
 	}
 	
-	
+	@GetMapping("/getallusers")
+	public ResponseEntity<?> GetAllusers()
+	{
+		return new ResponseEntity<String>("getallusers",HttpStatus.OK);
+	}
 	
 	
 	
