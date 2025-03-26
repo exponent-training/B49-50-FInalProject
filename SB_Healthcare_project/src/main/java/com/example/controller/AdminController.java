@@ -111,7 +111,8 @@ public class AdminController {
 	@GetMapping("/getallusers")
 	public ResponseEntity<?> GetAllusers()
 	{
-		return new ResponseEntity<String>("getallusers",HttpStatus.OK);
+		List<User> alluser=asi.getallUsers();
+		return new ResponseEntity<List<User>>(alluser,HttpStatus.OK);
 	}
 	
 	
