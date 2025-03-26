@@ -3,11 +3,11 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="HospitalProject" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c1257db7-a50c-4477-bebb-f247558e808b">
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Sample DB"/>
-	<field name="pid" class="java.lang.Integer"/>
-	<field name="pname" class="java.lang.String"/>
-	<field name="patientNumber" class="java.lang.String"/>
-	<field name="pemail" class="java.lang.String"/>
-	<field name="paddress" class="java.lang.String"/>
+	<field name="uid" class="java.lang.Integer"/>
+	<field name="firstName" class="java.lang.String"/>
+	<field name="lastname" class="java.lang.String"/>
+	<field name="address" class="java.lang.String"/>
+	<field name="gender" class="java.lang.String"/>
 	<background>
 		<band/>
 	</background>
@@ -20,7 +20,7 @@
 					<textElement>
 						<font size="34" isBold="true"/>
 					</textElement>
-					<text><![CDATA[Audit]]></text>
+					<text><![CDATA[Patient Details]]></text>
 				</staticText>
 				<staticText>
 					<reportElement x="395" y="43" width="180" height="20" forecolor="#FFFFFF" uuid="4ef0b836-6fc5-448a-a1ed-e92aea44bca9"/>
@@ -47,7 +47,7 @@
 				<textElement textAlignment="Center">
 					<font size="14" isBold="true"/>
 				</textElement>
-				<text><![CDATA[pid]]></text>
+				<text><![CDATA[uid]]></text>
 			</staticText>
 			<staticText>
 				<reportElement mode="Opaque" x="111" y="0" width="111" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="950f32ed-b928-4967-9272-e6289c1fe7b3">
@@ -56,7 +56,7 @@
 				<textElement textAlignment="Center">
 					<font size="14" isBold="true"/>
 				</textElement>
-				<text><![CDATA[pname]]></text>
+				<text><![CDATA[firstName]]></text>
 			</staticText>
 			<staticText>
 				<reportElement mode="Opaque" x="222" y="0" width="111" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="847ec886-c452-4cfe-8c0c-6f1fe87ccb2a">
@@ -65,7 +65,7 @@
 				<textElement textAlignment="Center">
 					<font size="14" isBold="true"/>
 				</textElement>
-				<text><![CDATA[patientNumber]]></text>
+				<text><![CDATA[lastname]]></text>
 			</staticText>
 			<staticText>
 				<reportElement mode="Opaque" x="333" y="0" width="111" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="93a2bacd-1982-4c3c-8455-6308a99c1d87">
@@ -74,7 +74,7 @@
 				<textElement textAlignment="Center">
 					<font size="14" isBold="true"/>
 				</textElement>
-				<text><![CDATA[pemail]]></text>
+				<text><![CDATA[address]]></text>
 			</staticText>
 			<staticText>
 				<reportElement mode="Opaque" x="444" y="0" width="111" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="909ee6db-c007-4efa-aee0-bd18f2ae5950">
@@ -83,7 +83,7 @@
 				<textElement textAlignment="Center">
 					<font size="14" isBold="true"/>
 				</textElement>
-				<text><![CDATA[paddress]]></text>
+				<text><![CDATA[gender]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
@@ -99,7 +99,7 @@
 				<textElement>
 					<font size="14"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{pid}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{uid}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
 				<reportElement x="111" y="0" width="111" height="20" uuid="b70aa302-7408-4d16-9d39-95f8c643ac17">
@@ -108,7 +108,7 @@
 				<textElement>
 					<font size="14"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{pname}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{firstName}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
 				<reportElement x="222" y="0" width="111" height="20" uuid="366d0af0-8307-49a5-9e01-2e4303f63a0e">
@@ -117,7 +117,7 @@
 				<textElement>
 					<font size="14"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{patientNumber}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{lastname}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
 				<reportElement x="333" y="0" width="111" height="20" uuid="3946185a-0aa2-40a3-bebb-fe73d311d8f5">
@@ -126,7 +126,7 @@
 				<textElement>
 					<font size="14"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{pemail}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{address}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
 				<reportElement x="444" y="0" width="111" height="20" uuid="5be46a3b-5a45-47cd-b721-7162697948fc">
@@ -135,7 +135,7 @@
 				<textElement>
 					<font size="14"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{paddress}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{gender}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

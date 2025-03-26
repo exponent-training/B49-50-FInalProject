@@ -162,6 +162,56 @@ public class UserServiceIMPL implements UserService {
 	}
 
 	@Override
+	public void generatePatientReportInservice(String format) throws JRException {
+
+		List<User> patientList = ur.findByRoles_Rid(3);
+
+		System.out.println(patientList);
+
+		try {
+			// 1 load file
+			File file = ResourceUtils.getFile("classpath:PatientDetails.jrxml");
+
+			// compile report
+			JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
+
+			// datasource creation -> data -> report
+			JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(patientList);
+
+			Map<String, Object> parameters = new HashMap<String, Object>();
+			parameters.put("created by", "exponent");
+
+			// filling data inside report. patient.jrxml allpatient
+			JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, dataSource);
+
+			// checking format of report
+			if (format.equalsIgnoreCase("html")) {
+
+				JasperExportManager.exportReportToHtmlFile(jasperPrint, "C:\\MyHospitalReports\\Patient.html");
+			} else if (format.equalsIgnoreCase("pdf")) {
+
+				JasperExportManager.exportReportToPdfFile(jasperPrint, "C:\\MyHospitalReports\\Patient.pdf");
+			} else if (format.equalsIgnoreCase("csv")) {
+
+				JRCsvExporter csvfile = new JRCsvExporter();
+
+				csvfile.setExporterInput(new SimpleExporterInput(jasperPrint));
+
+				csvfile.setExporterOutput(new SimpleWriterExporterOutput("C:\\MyHospitalReports\\Patient.csv"));
+
+				csvfile.exportReport();
+
+			}
+
+		} catch (FileNotFoundException e) {
+
+			e.printStackTrace();
+
+		}
+
+	}
+
+	@Override
 	public void generateUserReportInService(String format) throws JRException {
 
 		List<User> userList = ur.findAll();
@@ -203,7 +253,7 @@ public class UserServiceIMPL implements UserService {
 			}
 
 		} catch (FileNotFoundException e) {
-			
+
 			e.printStackTrace();
 		}
 

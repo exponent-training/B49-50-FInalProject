@@ -62,6 +62,18 @@ public class UserController {
 			return ResponseEntity.notFound().build();
 		}
 	}
+	
+	
+
+	@GetMapping("/generatePatientReport/{format}")
+	public ResponseEntity<?> generatePatientReport(@PathVariable String format) throws JRException {
+
+		us.generatePatientReportInservice(format);
+		return new ResponseEntity("Report created for Patient", HttpStatus.CREATED);
+
+	}
+
+
 
 	@GetMapping("/generateUserReport/{format}")
 	public ResponseEntity<?> generateUserReport(@PathVariable String format) throws JRException {

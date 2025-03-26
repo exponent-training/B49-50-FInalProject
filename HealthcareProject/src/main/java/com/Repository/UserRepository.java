@@ -20,9 +20,8 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 
 	public boolean existsByEmail(String email);
 
-	/* boolean existsByEmail(String email); */
-
 	void deleteByEmail(String email);
 
-//	Optional<User> findByUsername(String username);
+	List<User> findByRoles_Rid(int rid);
+
 }

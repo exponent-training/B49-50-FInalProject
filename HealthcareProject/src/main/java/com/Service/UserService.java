@@ -24,4 +24,6 @@ public interface UserService {
 
 	public void generateUserReportInService(String format) throws JRException;
 
+	public void generatePatientReportInservice(String format) throws JRException;
+
 }

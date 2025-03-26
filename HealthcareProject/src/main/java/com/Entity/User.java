@@ -38,7 +38,7 @@ public class User {
 
 	private String mobileno;
 
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.DETACH)
 	private Roles roles;
 
 //	@NotBlank(message = "This field should not be blank")
