@@ -98,4 +98,9 @@ public class UserController {
 
 	}
 
+	public ResponseEntity<?>testAPI(){
+		
+		return new ResponseEntity("Working fine",HttpStatus.OK);
+		
+	}
 }
