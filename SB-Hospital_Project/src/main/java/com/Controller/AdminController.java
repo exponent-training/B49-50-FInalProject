@@ -26,7 +26,7 @@ import com.Service.DoctorService;
 String str = "";
 @RestController
 public class AdminController {
-
+String str;
 	Logger logger = LoggerFactory.getLogger(AdminController.class);
 
 	@Autowired
