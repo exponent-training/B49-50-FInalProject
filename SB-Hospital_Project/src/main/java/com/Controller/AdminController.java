@@ -23,7 +23,7 @@ import com.Entity.User;
 import com.Service.AdminService;
 import com.Service.DoctorService;
 
-
+String str = "name";
 @RestController
 public class AdminController {
 
