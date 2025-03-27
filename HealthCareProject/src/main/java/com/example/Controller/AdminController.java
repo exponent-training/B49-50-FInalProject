@@ -95,4 +95,9 @@ public class AdminController
 		}
 	}
 }*/
+	
+	public ResponseEntity<?> taskAPI()
+	{
+		return new ResponseEntity("Working fine " , HttpStatus.OK);
+	}
 }
