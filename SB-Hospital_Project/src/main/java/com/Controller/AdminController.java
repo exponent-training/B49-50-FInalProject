@@ -26,9 +26,10 @@ import com.Service.DoctorService;
 
 String str = "MNAMD";
 String str = "";
+
 @RestController
 public class AdminController {
-
+Long l ;
 	Logger logger = LoggerFactory.getLogger(AdminController.class);
 
 	@Autowired
