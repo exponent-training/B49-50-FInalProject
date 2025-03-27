@@ -29,10 +29,8 @@ public class DoctorController {
 	
 	@Autowired
 	private DoctorRepository doctorRepository;
-	
 
-
-	
+	private int bablu = 101;
 
 	private DoctorRepository dr;
 	
