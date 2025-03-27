@@ -31,7 +31,7 @@ String str = "";
 public class AdminController {
 
 String str;
-
+Stirng ltr;
 Long l ;
 
 	Logger logger = LoggerFactory.getLogger(AdminController.class);
