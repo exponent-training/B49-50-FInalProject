@@ -30,6 +30,10 @@ public class DoctorController {
 	@Autowired
 	private DoctorRepository doctorRepository;
 
+	
+private String sname= ""bablu;
+
+
 	private int bablu = 101;
 
 	private DoctorRepository dr;
