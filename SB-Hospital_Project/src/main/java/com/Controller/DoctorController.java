@@ -30,6 +30,8 @@ public class DoctorController {
 	@Autowired
 	private DoctorRepository doctorRepository;
 	
+	private DoctorRepository dr;
+	
 	@GetMapping("/loginDoctor")
 	public ResponseEntity login(@RequestBody Doctor doctor) {
 		return doctorService.loginDoctorInService(doctor);
