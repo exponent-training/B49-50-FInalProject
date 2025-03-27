@@ -2,6 +2,7 @@ package com.Service;
 
 import java.util.List;
 
+import com.Entity.Doctor;
 import com.Entity.Roles;
 import com.Entity.User;
 

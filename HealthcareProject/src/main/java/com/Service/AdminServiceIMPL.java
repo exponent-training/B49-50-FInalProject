@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.Entity.Doctor;
 import com.Entity.Login;
 import com.Entity.Roles;
 import com.Entity.User;

@@ -17,9 +17,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.Entity.Doctor;
 import com.Entity.Roles;
 import com.Entity.User;
 import com.Service.AdminService;
+import com.Service.DoctorService;
 import com.Service.RoleService;
 
 import lombok.Getter;
@@ -32,6 +34,10 @@ public class AdminController {
 
 	@Autowired
 	private RoleService rs;
+	
+	@Autowired
+	private DoctorService ds;
+	
 
 	@PostMapping("/assignRole/{email}/{roleName}")
 	public ResponseEntity<?> assignRoles(@PathVariable String email, @PathVariable String roleName) {
@@ -105,4 +111,13 @@ public class AdminController {
 	}
 
 	
+	// Doctor registration
+	
+	@PostMapping("/registerDoctor")
+	public ResponseEntity<?> registerDoctor(@RequestBody Doctor doctor) {
+
+		ds.registerDoctorInService(doctor);
+
+		return new ResponseEntity("Doctor saved", HttpStatus.CREATED);
+	}
 }
