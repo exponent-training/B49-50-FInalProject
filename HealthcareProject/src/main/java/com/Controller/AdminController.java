@@ -104,4 +104,10 @@ public class AdminController {
 		}
 	}
 
+	public String newApi() {
+
+		return "task api";
+
+	}
+
 }
