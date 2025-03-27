@@ -65,7 +65,6 @@ public class AdminController {
 	{
 	   return new ResponseEntity("working fine" , HttpStatus.OK);
 	}
-<<<<<<< HEAD
 	
 	
 	  @PostMapping("/registerDoctor") 
