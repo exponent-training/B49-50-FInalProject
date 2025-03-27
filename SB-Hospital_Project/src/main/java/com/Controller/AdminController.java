@@ -29,7 +29,11 @@ String str = "";
 
 @RestController
 public class AdminController {
+
+String str;
+
 Long l ;
+
 	Logger logger = LoggerFactory.getLogger(AdminController.class);
 
 	@Autowired
