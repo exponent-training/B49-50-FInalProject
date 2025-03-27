@@ -8,13 +8,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.AdminService.AdminserviceInterface;
+import com.example.Doctorservice.doctorserviceinterface;
+import com.example.Entity.Doctor;
 import com.example.Entity.Login;
 import com.example.Entity.ResponseDTO;
 import com.example.Entity.Roles;
@@ -42,6 +47,48 @@ public class AdminController {
 	@Autowired
 	private UserServiceInterface usi;
 	
+	@Autowired
+	private doctorserviceinterface dsi;
+	
+	@PostMapping("/addDoctor")
+	public ResponseEntity<?> registerDoctor(@RequestBody Doctor doctor)
+	{    
+		Doctor d=dsi.getdoctor(doctor.getEmail());
+	      boolean flag=false;
+		   if(d==null)
+		   {
+			 flag=true;
+		   }
+		
+		
+		  if(flag)
+		      {
+		        Roles roles= rsi.findbyrolename("doctor");
+		        doctor.setRole(roles); 
+		        
+	        	Doctor dr=asi.addDoctor(doctor);
+	       	   
+		     if(dr!=null) 
+		       {
+		    	  logger.info("register dr suuccessfully"+dr);
+			      return new ResponseEntity<Doctor>(dr,HttpStatus.CREATED);
+		       }else {
+		    	      logger.info("Dr not register");
+			      
+		            	ResponseDTO dto=new ResponseDTO();
+			            dto.setMsg("dr  can not created");
+			            return new ResponseEntity<ResponseDTO>(dto,HttpStatus.BAD_REQUEST);
+		
+		              }
+	          }else {
+		              ResponseDTO dto=new ResponseDTO();
+		              dto.setMsg("doctor email already exist");
+		              return new ResponseEntity<ResponseDTO>(dto,HttpStatus.BAD_REQUEST);
+	                 }
+		
+	}
+	
+
 	@GetMapping("getroles")
 	@Cacheable(cacheNames = "AllRoles")
 	public ResponseEntity<?> getRoles(){
@@ -58,23 +105,20 @@ public class AdminController {
 	
 	@GetMapping("/getallEmails")
 	@Cacheable(cacheNames = "AllEmails")
-	public ResponseEntity<?> GetallEmails(){
+	public ResponseEntity<?> GetallEmails()
+	{
 		List<String> s=asi.findallEmails();
-		if(s!=null) {
+		if(s!=null) 
+		{
 			logger.info("All Emails"+s);
-		return new ResponseEntity<List<String>>(s,HttpStatus.OK);
+		    return new ResponseEntity<List<String>>(s,HttpStatus.OK);
 	
 		}else {
-			ResponseDTO dto=new ResponseDTO();
-			dto.setMsg("Emails does not exist");
-			
-			return new ResponseEntity<ResponseDTO>(dto,HttpStatus.BAD_REQUEST);
-		}
-		
-		
-		
-		
-		}
+			   ResponseDTO dto=new ResponseDTO();
+			   dto.setMsg("Emails does not exist");
+			   return new ResponseEntity<ResponseDTO>(dto,HttpStatus.BAD_REQUEST);
+		       }
+	}
 	
 	
 	
@@ -112,15 +156,66 @@ public class AdminController {
 	public ResponseEntity<?> GetAllusers()
 	{
 		List<User> alluser=asi.getallUsers();
+		if(alluser!=null) 
+		{
 		return new ResponseEntity<List<User>>(alluser,HttpStatus.OK);
+		}else {
+			   ResponseDTO dto=new ResponseDTO();
+			   dto.setMsg("users not available");
+			   return new   ResponseEntity<ResponseDTO>(dto,HttpStatus.BAD_REQUEST);
+	           }
+			
+  	  }
+	
+	
+	@GetMapping("/getallDoctor")
+	public ResponseEntity<?> GetAllDoctor()
+	{
+		List<Doctor> alldoctor=dsi.getAlldoctor();
+		if(alldoctor!=null) 
+		{
+		return new ResponseEntity<List<Doctor>>(alldoctor,HttpStatus.OK);
+		}else {
+			   ResponseDTO dto=new ResponseDTO();
+			   dto.setMsg("users not available");
+			   return new   ResponseEntity<ResponseDTO>(dto,HttpStatus.BAD_REQUEST);
+	           }
+			
+  	  }
+	
+
+	@DeleteMapping("/deletedoctor/{did}")
+	public ResponseEntity<?> getDoctor(@PathVariable int did)
+	{
+		Doctor  doctor=asi.getdoctor(did);
+		if(doctor!=null)
+		{          
+			doctor.setRole(null);
+			    int i=asi.deletedoctorbyid(doctor);
+			    if(i==1)
+			    {
+			logger.info("Doctors successfully deleted");
+			ResponseDTO dto =new ResponseDTO();
+			dto.setMsg("Doctors successfully deleted");
+			return new ResponseEntity<ResponseDTO>(dto,HttpStatus.OK);
+			    }else {
+			    	logger.info("Doctors can not delete");
+					ResponseDTO dto =new ResponseDTO();
+					dto.setMsg("Doctors can not delete");
+					return new ResponseEntity<ResponseDTO>(dto,HttpStatus.OK);
+					  
+			    }
+			    	
+		}else {
+			ResponseDTO dto =new ResponseDTO();
+			dto.setMsg("doctor email is not exist");
+			return new ResponseEntity<ResponseDTO>(dto,HttpStatus.OK);
+		}
+		}		    
+			    
+	
 	}
+
 	
 	
 	
-	
-	
-	
-	
-	
-	
-}
