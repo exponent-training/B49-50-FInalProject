@@ -65,6 +65,7 @@ public class AdminController {
 	{
 	   return new ResponseEntity("working fine" , HttpStatus.OK);
 	}
+<<<<<<< HEAD
 	
 	
 	  @PostMapping("/registerDoctor") 
@@ -83,4 +84,11 @@ public class AdminController {
 	  
 		  return drService.deleteDoctorById(id);
 		}
+
+
+	public ResponseEntity<?> taskAPIChecking()
+	{
+	   return new ResponseEntity("working fine" , HttpStatus.OK);
+	}
+
 }
