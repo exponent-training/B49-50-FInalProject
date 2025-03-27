@@ -50,4 +50,9 @@ public class AdminController {
 	{
 	   return new ResponseEntity("working fine" , HttpStatus.OK);
 	}
+
+	public ResponseEntity<?> taskAPIChecking()
+	{
+	   return new ResponseEntity("working fine" , HttpStatus.OK);
+	}
 }
