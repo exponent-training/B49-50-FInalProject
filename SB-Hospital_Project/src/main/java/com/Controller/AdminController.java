@@ -28,10 +28,13 @@ import com.Service.DoctorService;
 public class AdminController {
 
 	Logger logger = LoggerFactory.getLogger(AdminController.class);
-	
+
 	@Autowired
 	private AdminService as;
 	
+	@Autowired
+	private DoctorService drService;
+
 	@Autowired
 	private DoctorService drService;
 
@@ -41,29 +44,14 @@ public class AdminController {
 
 		return new ResponseEntity("role assign", HttpStatus.OK);
 	}
-	
+
 	@GetMapping("/getAllEmails")
 	@Cacheable(cacheNames = "allEmails")
-	public ResponseEntity<?> getAllEmails(){
-		
+	public ResponseEntity<?> getAllEmails() {
+
 		List<String> listofEmails = as.getAllEmailsFromService();
-		
-		return new ResponseEntity(listofEmails , HttpStatus.OK);
-	}
-	
-	@GetMapping("/getAllRoles")
-	@Cacheable(cacheNames = "allRoles")
-	public ResponseEntity<?> getAllRoles(){
-		
-		List<String> listofRoles = as.getAllRolesFromService();
-		
-		return new ResponseEntity(listofRoles , HttpStatus.OK);
-	}
-	
-	
-	public ResponseEntity<?> taskAPI()
-	{
-	   return new ResponseEntity("working fine" , HttpStatus.OK);
+
+		return new ResponseEntity(listofEmails, HttpStatus.OK);
 	}
 	
 	
@@ -85,9 +73,40 @@ public class AdminController {
 		}
 
 
-	public ResponseEntity<?> taskAPIChecking()
-	{
-	   return new ResponseEntity("working fine" , HttpStatus.OK);
+	@GetMapping("/getAllRoles")
+	@Cacheable(cacheNames = "allRoles")
+	public ResponseEntity<?> getAllRoles() {
+
+		List<String> listofRoles = as.getAllRolesFromService();
+
+		return new ResponseEntity(listofRoles, HttpStatus.OK);
 	}
+
+
+	public ResponseEntity<?> taskAPI() {
+		return new ResponseEntity("working fine", HttpStatus.OK);
+	}
+
+	public ResponseEntity<?> taskAPIChecking() {
+		return new ResponseEntity("working fine", HttpStatus.OK);
+	}
+
+	@PostMapping("/registerDoctor")
+	public ResponseEntity<?> RegisterDoctor(@RequestBody Doctor doctor) {
+
+		return drService.RegisterDoctorInService(doctor);
+
+	}
+
+	/*
+	 * @DeleteMapping("/deleteUser/{did}") public ResponseEntity<?>
+	 * deleteDoctor( @PathVariable int id){ return drService.deleteUserById(id); }
+	 */
+	@DeleteMapping("/deleteDoctor")
+	public ResponseEntity<?> deleteDoctor(@RequestParam int id) {
+
+		return drService.deleteDoctorById(id);
+	}
+
 
 }
