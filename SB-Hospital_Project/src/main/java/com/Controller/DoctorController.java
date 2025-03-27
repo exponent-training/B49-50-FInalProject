@@ -30,6 +30,9 @@ public class DoctorController {
 	@Autowired
 	private DoctorRepository doctorRepository;
 	
+	private int bablu=101;
+	private String name = "raj";
+	
 	@GetMapping("/loginDoctor")
 	public ResponseEntity login(@RequestBody Doctor doctor) {
 		return doctorService.loginDoctorInService(doctor);
